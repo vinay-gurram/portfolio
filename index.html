@@ -18,6 +18,7 @@
             <li><a href="#main">HOME</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#services">SKILLS</a></li>
+            <li><a href="#project">PROJECT'S</a></li>
             <li><a href="#contact">CONTACT</a></li>
             <i class="fa-solid fa-square-xmark" onclick="closemenu()"></i>
           </ul>
@@ -90,12 +91,51 @@
                     <ul>
                         <li><span>2017</span><br>Completed my schooling</li>
                         <li><span>2019</span><br>Intermediate in SR</li>
-                        <li><span>2023</span><br>Graduation in Malla Nalla Reddy College</li>
+                        <li><span>2023</span><br>Graduation in Nalla Malla Reddy College</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
+              <!-- project Section -->
+
+    <div id="project">
+      <div class="container">
+          <h1 class="title"><u>Projects</u></h1>
+          <div class="services-list">
+              <div>
+                <i class="fa-solid fa-diagram-project"></i>
+                  <h2>Created ChatGPT</h2>
+                  <div class="tab-contain active-tab" id="skills">
+                      <img src="./images/Screenshot 2025-03-31 at 10.22.35.png"/>
+                      <div class="div">
+                      <p>Developed an AI chatbot using Gimini ChatGPT, capable of understanding and responding to user queries intelligently. By using API(application programing interface) to enhance conversation flow and provide accurate responses. Designed with a user-friendly interface and scalable architecture for diverse applications.</p>
+                      </div>
+                  </div>
+                  <div class="tab-contain active-tab" id="skills">
+                    <img src="./images/WhatsApp Image 2025-03-31 at 16.01.17.jpeg"/>
+                    <div class="div">
+                    <p>Chatbot Using Gemini API
+                      I developed an intelligent chatbot using the Gemini API, designed to provide interactive and dynamic responses. This chatbot can understand user queries, generate meaningful replies, and enhance user engagement with AI-powered conversations. It showcases my skills in API integration, natural language processing (NLP), and chatbot development.</p>
+                    </div>
+                </div>
+              </div>
+               
+              <div id="clon">
+                <i class="fa-solid fa-diagram-project"></i>
+                  <h2>Created clons</h2>
+                  <img src="./images/Screenshot 2025-03-31 at 10.58.48.png"/><br><br>
+                  <p>YouTube Clone (HTML & CSS)
+                    I built a YouTube clone using HTML and CSS, replicating the platform’s user interface with a clean and responsive design. This project showcases my front-end development skills, including layout structuring, styling, and responsiveness, to create an engaging video platform experience.</p><br><br>
+                  
+                  <img src="./images/Screenshot 2025-03-31 at 10.59.57.png"/><br><br>
+                  <p>Amazon Clone (HTML & CSS)
+                    I developed an Amazon clone using HTML and CSS, replicating the e-commerce platform’s user interface with a responsive and visually appealing design. This project demonstrates my front-end development skills in layout design, product listing, navigation, and styling, creating a seamless shopping experience.</p>
+              </div>
+          </div>
+      </div>
+  </div>
 
     <!-- Contact Section -->
     <div id="contact">
@@ -119,12 +159,14 @@
                 </div>
 
                 <div class="contact-right">
-                    <form>
+                    <form name="submit-to-google-sheet">
                         <input type="text" name="Name" placeholder="Your name" required>
-                        <input type="email" name="email" placeholder="Your email" required>
+                        <input type="email" name="Email" placeholder="Your email" required>
                         <textarea name="Message" rows="6" placeholder="Your message"></textarea>
                         <div class="iiii"><button type="submit">Submit</button></div>
                     </form>
+
+                    <span id="msg"></span>
                 </div>
             </div>
         </div>
@@ -156,6 +198,24 @@
         function closemenu() {
             sidemenu.style.right = "-200px";
         }
+    </script>
+     <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwzgj4GkQHd1dvehjEjauOzDKGW5k03TRRnAi0jIO5KdHkBl9dOo9lo5yLvBhQGHGS7/exec'
+      const form = document.forms['submit-to-google-sheet']
+      const msg = document.getElementById("msg")
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            msg.innerHTML = "message sent successfully 👍🏻"
+            setTimeout(function(){
+              msg.innerHTML = ""
+            },5000) 
+            form.reset()
+          })
+          .catch(error => console.error('Error!', error.message))
+      })
     </script>
 
   </body>
